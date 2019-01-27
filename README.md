@@ -8,4 +8,4 @@ Controlls:
 R to restart
 
 
-to speed up or down press +,- (that doesn´t work right now)
+to speed up or down press +,- 
