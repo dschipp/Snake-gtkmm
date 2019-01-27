@@ -32,7 +32,7 @@ void Snake::mainloop(Snake::move dir)
             first_tiles -= 1;
             score = 0;
         }
-        if(checkonFruit())
+        if(ckeck_eat_fruit())
         {
             add_to_Snake();
             while(checkonFruit())
@@ -40,6 +40,19 @@ void Snake::mainloop(Snake::move dir)
                 fruit.genxyCoord();
             }
         }    
+}
+
+bool Snake::ckeck_eat_fruit()
+{
+    auto it = snake.begin();
+
+    if((*it)->getX() == fruit.getX()
+            && (*it)->getY() == fruit.getY())
+    {
+                return true;
+    }
+
+    return false;
 }
 
 

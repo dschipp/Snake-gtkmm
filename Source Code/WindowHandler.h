@@ -2,6 +2,7 @@
 
 #include "gtkmm.h"
 #include "Snake.h"
+#include <map>
 
 class WindowHandler : public Gtk::Window
 {
@@ -37,5 +38,7 @@ class WindowHandler : public Gtk::Window
     void speed_up();
 
     void speed_down();
+
+    std::map<int, sigc::connection> m_connections;
 
 };

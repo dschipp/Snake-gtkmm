@@ -31,6 +31,8 @@ void WindowHandler::Init_timeout()
 
   sigc::connection conn = Glib::signal_timeout().connect(my_slot, speed);
 
+  m_connections[m_timer_number] = conn;
+
 }
 
 void WindowHandler::change_possible()
@@ -90,11 +92,24 @@ void WindowHandler::speed_up()
   {
     speed = speed - 10;
   }
+
+  m_connections[m_timer_number].disconnect();
+
+  m_connections.erase(m_timer_number);
+
+  Init_timeout();
+  
 }
 
 void WindowHandler::speed_down()
 {
-    speed = speed + 10;
+  speed = speed + 10;
+
+  m_connections[m_timer_number].disconnect();
+
+  m_connections.erase(m_timer_number);
+
+  Init_timeout();
 }
 
 void WindowHandler::random_dir()

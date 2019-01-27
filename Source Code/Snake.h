@@ -48,6 +48,8 @@ enum move
 
     void draw_speed(const Cairo::RefPtr<Cairo::Context>& cr, int x_pos, int y_pos);
 
+    bool ckeck_eat_fruit();
+
 private:
 
 
