@@ -1,4 +1,4 @@
-project('snake', 'cpp'
+project('snake', 'cpp',
   version : '0.1'
 )
 
