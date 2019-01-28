@@ -1,11 +1,21 @@
 # Snake
-The Classig Snake game with a GUI written with  gtkmm
 
-Controlls:
+The classic Snake video game concept with a modern GTK+ interface.
 
- 	   W  A  S  D
+## Dependencies
 
-R to restart
+* [Meson](https://mesonbuild.com/Getting-meson.html)
 
+* [gtkmm](https://www.gtkmm.org/en/download.html)
 
-to speed up or down press +,- 
+## Builing
+
+Follow [the instructions](https://mesonbuild.com/Quick-guide.html#compiling-a-meson-project) to build this project using Meson.
+
+## Controls
+
+* Use `W`, `A`, `S` and `D` to move the snake.
+
+* Press `R` to restart
+
+* Speed the game up and down using `+` and `-` respectively.
