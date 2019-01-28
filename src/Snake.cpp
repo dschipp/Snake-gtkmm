@@ -150,14 +150,13 @@ bool Snake::checkonFruit()
 
 bool Snake::game_over()
 {
+    auto jt = snake.begin();
+
     for(auto it = snake.begin(); it != snake.end(); it++)
     {
-        for(auto jt = snake.begin(); jt != snake.end(); jt++)
+        if((*it)->getX() == (*jt)->getX() && (*it)->getY() == (*jt)->getY() && it != jt)
         {
-            if((*it)->getX() == (*jt)->getX() && (*it)->getY() == (*jt)->getY() && it != jt)
-            {
-                return true;
-            }
+            return true;
         }
     }
 
