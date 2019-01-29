@@ -37,29 +37,40 @@ void WindowHandler::Init_timeout()
 
 void WindowHandler::change_possible()
 {
-    if (last_dir == Snake::move::up && dir == Snake::move::down)
+    if (dir == Snake::move::up && new_dir == Snake::move::down)
     {
-      dir = last_dir;
+      new_dir = dir;
     }
-    if (last_dir == Snake::move::down && dir == Snake::move::up)
+    if (dir == Snake::move::down && new_dir == Snake::move::up)
     {
-      dir = last_dir;
+      new_dir = dir;
     }
-    if (last_dir == Snake::move::left && dir == Snake::move::right)
+    if (dir == Snake::move::left && new_dir == Snake::move::right)
     {
-      dir = last_dir;
+      new_dir = dir;
     }
-    if (last_dir == Snake::move::right && dir == Snake::move::left)
+    if (dir == Snake::move::right && new_dir == Snake::move::left)
     {
-      dir = last_dir;
+      new_dir = dir;
     }
 }
 
 bool WindowHandler::MainLoop(int m_timer_number)
 {
-    change_possible();
-    field.mainloop(dir);
-    field.force_redraw();
+
+    if(queue_dir.empty())
+    {
+        field.mainloop(dir);
+        field.force_redraw();
+    }
+    else
+    {
+        last_dir = dir;
+        dir = queue_dir.front();
+        field.mainloop(dir);
+        field.force_redraw();
+        queue_dir.pop();
+    }
 
     if(field.game_over())
     {
@@ -143,30 +154,38 @@ bool WindowHandler::on_key_press_event(GdkEventKey* key_event)
 {
   if(key_event->keyval == GDK_KEY_w)
   {
-    last_dir = dir;
-    dir = Snake::move::up;
-    field.force_redraw();
+    new_dir = Snake::move::up;
+    change_possible();
+
+    queue_dir.push(new_dir);
+
     return true;
   }
   else if(key_event->keyval == GDK_KEY_s)
   {
-    last_dir = dir;
-    dir = Snake::move::down;
-    field.force_redraw();
+    new_dir = Snake::move::down;
+    change_possible();
+
+    queue_dir.push(new_dir);
+
     return true;
   }
   else if(key_event->keyval == GDK_KEY_a)
   {
-    last_dir = dir;
-    dir = Snake::move::left;
-    field.force_redraw();
+    new_dir = Snake::move::left;
+    change_possible();
+
+    queue_dir.push(new_dir);
+
     return true;
   }
   else if(key_event->keyval == GDK_KEY_d)
   {
-    last_dir = dir;
-    dir = Snake::move::right;
-    field.force_redraw();
+    new_dir = Snake::move::right;
+    change_possible();
+
+    queue_dir.push(new_dir);
+
     return true;
   }
   else if(key_event->keyval == GDK_KEY_r)

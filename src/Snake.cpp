@@ -58,7 +58,7 @@ bool Snake::ckeck_eat_fruit()
 
 void Snake::moveSnake(move Move0)
 {
-   std::list<SnakeObj*>::iterator its;
+   std::list<SnakeObj*>::iterator it_last;
 
    switch(Move0)
    {
@@ -71,9 +71,9 @@ void Snake::moveSnake(move Move0)
                 }
             else
                 {
-                    (*it)->setXY((*its)->getLastX(),  (*its)->getLastY());
+                    (*it)->setXY((*it_last)->getLastX(),  (*it_last)->getLastY());
                 }
-            its = it;
+            it_last = it;
         }
         break;
     case move::down :
@@ -85,9 +85,9 @@ void Snake::moveSnake(move Move0)
                 }
             else
                 {
-                    (*it)->setXY((*its)->getLastX(),  (*its)->getLastY());
+                    (*it)->setXY((*it_last)->getLastX(),  (*it_last)->getLastY());
                 }
-            its = it;
+            it_last = it;
         }
         break;
     case move::left :
@@ -99,9 +99,9 @@ void Snake::moveSnake(move Move0)
                 }
             else
                 {
-                    (*it)->setXY((*its)->getLastX(),  (*its)->getLastY());
+                    (*it)->setXY((*it_last)->getLastX(),  (*it_last)->getLastY());
                 }
-            its = it;
+            it_last = it;
         }
         break;
     case move::right :
@@ -113,9 +113,9 @@ void Snake::moveSnake(move Move0)
                 }
             else
                 {
-                    (*it)->setXY((*its)->getLastX(),  (*its)->getLastY());
+                    (*it)->setXY((*it_last)->getLastX(),  (*it_last)->getLastY());
                 }
-            its = it;
+            it_last = it;
         }
         break;
     default :
