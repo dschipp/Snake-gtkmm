@@ -16,6 +16,9 @@ public:
     Snake();
     ~Snake();
 
+
+    
+
 enum move
     {
         up,
