@@ -9,6 +9,7 @@ extern int height;
 extern int score;
 extern int speed;
 extern int first_tiles;
+extern int visual_speed;
 
 Snake::Snake()
 {
@@ -318,7 +319,7 @@ void Snake::draw_speed(const Cairo::RefPtr<Cairo::Context>& cr, int x_pos, int y
   font.set_family("Monospace");
   font.set_weight(Pango::WEIGHT_BOLD);
 
-  string sSpeed = "Speed : " + to_string(speed);
+  string sSpeed = "Speed : " + to_string(visual_speed);
 
 
   auto layout = create_pango_layout(sSpeed);

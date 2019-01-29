@@ -3,6 +3,7 @@
 extern int speed;
 extern int score;
 extern int first_tiles;
+extern int visual_speed;
 
 WindowHandler::WindowHandler()
 {   
@@ -99,28 +100,36 @@ void WindowHandler::restart()
 
 void WindowHandler::speed_up()
 {
-  if(speed > 10)
+  if(visual_speed < 10)
   {
     speed = speed - 10;
-  }
+    visual_speed = visual_speed + 1;
+  
 
   m_connections[m_timer_number].disconnect();
 
   m_connections.erase(m_timer_number);
 
   Init_timeout();
+
+  }
   
 }
 
 void WindowHandler::speed_down()
 {
-  speed = speed + 10;
+  if(visual_speed > 1)
+  {
+    speed = speed + 10;
+    visual_speed = visual_speed - 1;
+  
 
   m_connections[m_timer_number].disconnect();
 
   m_connections.erase(m_timer_number);
 
   Init_timeout();
+  }
 }
 
 void WindowHandler::random_dir()

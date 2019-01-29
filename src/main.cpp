@@ -7,6 +7,7 @@ int height = 30;
 int speed = 90;
 int score = 0;
 int first_tiles = 3;
+int visual_speed = 5;
 
 int main(int argc, char *argv[])
 {
