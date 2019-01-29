@@ -3,6 +3,7 @@
 #include "gtkmm.h"
 #include "Snake.h"
 #include <map>
+#include <queue>
 
 class WindowHandler : public Gtk::Window
 {
@@ -33,6 +34,8 @@ class WindowHandler : public Gtk::Window
 
     Snake::move last_dir;
 
+    Snake::move new_dir;
+
     void change_possible();
 
     void speed_up();
@@ -40,5 +43,7 @@ class WindowHandler : public Gtk::Window
     void speed_down();
 
     std::map<int, sigc::connection> m_connections;
+
+    std::queue<Snake::move> queue_dir;
 
 };
