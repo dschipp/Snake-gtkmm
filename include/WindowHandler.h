@@ -36,7 +36,7 @@ class WindowHandler : public Gtk::Window
 
     Snake::move new_dir;
 
-    void change_possible();
+    bool move_possible(Snake::move, Snake::move);
 
     void speed_up();
 
