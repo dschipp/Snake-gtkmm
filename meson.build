@@ -8,7 +8,7 @@ snake_src = files(
   'src/main.cpp',
   'src/Snake.cpp',
   'src/SnakeObj.cpp',
-  'src/Spielfeld.cpp',
+  'src/Snake.cpp',
   'src/WindowHandler.cpp'
 )
 
