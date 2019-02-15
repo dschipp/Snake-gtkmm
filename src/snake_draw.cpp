@@ -50,9 +50,9 @@ bool snake_draw::on_draw(const Cairo::RefPtr<Cairo::Context>& cr)
     int tiles_height = win_height / height;
     int tiles_width = win_width / width;
 
-    draw_text(cr, 24, 0,"Score : " + to_string(score));
-    draw_text(cr,330,0,"Hight Score : " + to_string(HighScore));
-    draw_text(cr,200,0,"Speed : " + to_string(visual_speed));
+    draw_text(cr, 24, 0,"Score : " + to_string(score), tiles_height, tiles_width);
+    draw_text(cr,330,0,"Hight Score : " + to_string(HighScore), tiles_height, tiles_width);
+    draw_text(cr,200,0,"Speed : " + to_string(visual_speed), tiles_height, tiles_width);
 
     int x1,x2,y1,y2;
 
@@ -97,7 +97,7 @@ bool snake_draw::on_draw(const Cairo::RefPtr<Cairo::Context>& cr)
     return true;
 }
 
-void snake_draw::draw_text(const Cairo::RefPtr<Cairo::Context>& cr, int x_pos, int y_pos, std::string to_print)
+void snake_draw::draw_text(const Cairo::RefPtr<Cairo::Context>& cr, int x_pos, int y_pos, std::string to_print, int tiles_height, int tiles_width)
 {
     Pango::FontDescription font;
 
@@ -111,8 +111,8 @@ void snake_draw::draw_text(const Cairo::RefPtr<Cairo::Context>& cr, int x_pos, i
 
     layout->set_font_description(font);
 
-    int text_width;
-    int text_height;
+    int text_width = tiles_width;
+    int text_height = tiles_height;
 
     layout->get_pixel_size(text_width, text_height);
 
