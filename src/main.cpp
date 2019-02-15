@@ -1,13 +1,11 @@
 #include <iostream>
 #include "WindowHandler.h"
-#include <time.h>
 
-int width = 30;
-int height = 30;
-int speed = 90;
+int width = 25;
+int height = 25;
 int score = 0;
 int first_tiles = 3;
-int visual_speed = 5;
+int speed = 100;
 
 int main(int argc, char *argv[])
 {

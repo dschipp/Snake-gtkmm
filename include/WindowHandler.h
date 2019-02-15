@@ -1,51 +1,44 @@
+
 #pragma once
 
-#include "gtkmm.h"
-#include "Snake.h"
-#include <map>
-#include <queue>
+#include <iostream>
+#include "snake_draw.h"
+#include "snake.h"
+
 
 class WindowHandler : public Gtk::Window
 {
     public:
+    
     WindowHandler();
     virtual ~WindowHandler();
 
-    bool MainLoop(int);
+    protected:
+
+    bool on_key_press_event(GdkEventKey* key_event);
 
     void Init_timeout();
 
-    void random_dir();
+    sigc::connection m_connections;
 
     private:
 
-    int m_timer_number;
-    int timeout_value;
+    snake::dir new_dir;
 
-    Snake field;
+    bool b_new_dir;
 
-    protected:
+    snake current_snake;
 
-    void restart();
+    snake_draw draw_field;
 
-    bool on_key_press_event(GdkEventKey* event) override;
+    bool main_loop(int);
 
-    Snake::move dir;
+    int m_timeout;
 
-    Snake::move last_dir;
+    void reset_timeout_conn();
 
-    Snake::move new_dir;
+    sigc::connection conn;
 
-    bool move_possible(Snake::move, Snake::move);
 
-    void speed_up();
-
-    void speed_down();
-
-    std::map<int, sigc::connection> m_connections;
-
-    std::queue<Snake::move> queue_dir;
-
-    
 
 };
