@@ -28,7 +28,7 @@ class snake_draw : public Gtk::DrawingArea
 
     snake* current_snake;
 
-    void draw_text(const Cairo::RefPtr<Cairo::Context>& cr, int x_pos, int y_pos, std::string);
+    void draw_text(const Cairo::RefPtr<Cairo::Context>& cr, int x_pos, int y_pos, std::string to_print, int tiles_height, int tiles_width);
 
     void set_and_read_HighScore_dat();
 };
